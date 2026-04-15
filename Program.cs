@@ -2,13 +2,12 @@ using System;
 
 class Product
 {
-
     public int price;
     public string product;
     public int id;
     public int stock;
-
-    public void Display()
+    
+    public void DisplayMenu()
     {
         Console.WriteLine
         (price + "              " + product + " " + id + "             " + stock);
@@ -19,11 +18,10 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine
-        ("Price (Php)      Product                   Product ID      Stock");
-        
         Product[] products = new Product[15];
-
+        Product[] cart = new Product[15];
+        int count = 0;
+        
         products[0] = new Product();
         products[0].price = 400;
         products[0].product = "Rice (5 kg)              ";
@@ -113,11 +111,35 @@ class Program
         products[14].product = "Dishwashing Liquid (1 L) ";
         products[14].id = 503;
         products[14].stock = 185;
-
+        
         for (int i = 0; i < products.Length; i++)
         {
-            products[i].Display();
+            products[i].DisplayMenu();
+        }
+        
+        Console.Write("\nEnter product ID: ");
+        int iid = Convert.ToInt32(Console.ReadLine());
+        
+        Console.Write("Enter quantity: ");
+        int iq = Convert.ToInt32(Console.ReadLine());
+        
+        for (int i = 0; i < products.Length; i++)
+        {
+            if (products[i].id == iid)
+            {
+                Product p = products[i];
+                p.stock -= iq;
+                cart[count] = new Product();
+                cart[count].product = p.product;
+                cart[count].stock = iq; 
+                Console.WriteLine($"\n{cart[0].product}{cart[0].stock}");
+            }
+        }
+        Console.WriteLine();
+        
+        for (int i = 0; i < products.Length; i++)
+        {
+            products[i].DisplayMenu();
         }
     }
 }
-
