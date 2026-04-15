@@ -12,6 +12,10 @@ class Product
         Console.WriteLine
         (price + "              " + product + " " + id + "             " + stock);
     }
+    
+    public int cId;
+    public string cProduct;
+    public int cQuantity;
 }
 
 class Program
@@ -20,8 +24,9 @@ class Program
     {
         Product[] products = new Product[15];
         Product[] cart = new Product[15];
+        int t = 0;
         int count = 0;
-        
+
         products[0] = new Product();
         products[0].price = 400;
         products[0].product = "Rice (5 kg)              ";
@@ -111,35 +116,71 @@ class Program
         products[14].product = "Dishwashing Liquid (1 L) ";
         products[14].id = 503;
         products[14].stock = 185;
-        
-        for (int i = 0; i < products.Length; i++)
+
+
+        char o = 'y';
+
+        while (char.ToLower(o) == 'y')
         {
-            products[i].DisplayMenu();
-        }
-        
-        Console.Write("\nEnter product ID: ");
-        int iid = Convert.ToInt32(Console.ReadLine());
-        
-        Console.Write("Enter quantity: ");
-        int iq = Convert.ToInt32(Console.ReadLine());
-        
-        for (int i = 0; i < products.Length; i++)
-        {
-            if (products[i].id == iid)
+            for (int i = 0; i < products.Length; i++)
             {
-                Product p = products[i];
-                p.stock -= iq;
-                cart[count] = new Product();
-                cart[count].product = p.product;
-                cart[count].stock = iq; 
-                Console.WriteLine($"\n{cart[0].product}{cart[0].stock}");
+                products[i].DisplayMenu();
             }
-        }
-        Console.WriteLine();
-        
-        for (int i = 0; i < products.Length; i++)
-        {
-            products[i].DisplayMenu();
+
+            Console.Write("\nEnter product ID: ");
+            int iId = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter quantity: ");
+            int iQ = Convert.ToInt32(Console.ReadLine());
+            
+            t += iQ;
+            
+            for (int i = 0; i < products.Length; i++)
+            {
+                if (products[i].id == iId)
+                {
+                    if (products[i].stock >= iQ)
+                    {
+                        products[i].stock -= iQ;
+                        
+                        bool f = false;
+
+                        for (int j = 0; j < count; j++)
+                        {
+                            if (cart[j].cId == iId)
+                            {
+                                cart[j].cQuantity += iQ;
+                                f = true;
+                                break;
+                            }
+                        }
+
+                        if (!f)
+                        {
+                            cart[count] = new Product();
+                            cart[count].cId = iId;
+                            cart[count].cProduct = products[i].product;
+                            cart[count].cQuantity = iQ;
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough stock!");
+                    }
+
+                    break;
+                }
+            }
+
+            Console.WriteLine($"Cart: ({t} / 100)");
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine($"{cart[i].cProduct} {cart[i].cQuantity}");
+            }
+
+            Console.Write("\nWould you like to order more? (Y/N): ");
+            o = Convert.ToChar(Console.ReadLine());
         }
     }
 }
