@@ -2,7 +2,7 @@ using System;
 
 class Product
 {
-    public int price;
+    public double price;
     public string product;
     public int id;
     public int stock;
@@ -12,7 +12,7 @@ class Product
         Console.WriteLine
         (price + "              " + product + " " + id + "             " + stock);
     }
-    
+    public double cPrice;
     public int cId;
     public string cProduct;
     public int cQuantity;
@@ -116,8 +116,7 @@ class Program
         products[14].product = "Dishwashing Liquid (1 L) ";
         products[14].id = 503;
         products[14].stock = 185;
-
-
+        
         char o = 'y';
 
         while (char.ToLower(o) == 'y')
@@ -161,14 +160,10 @@ class Program
                             cart[count].cId = iId;
                             cart[count].cProduct = products[i].product;
                             cart[count].cQuantity = iQ;
+                            cart[count].price = products[i].price;
                             count++;
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("Not enough stock!");
-                    }
-
                     break;
                 }
             }
@@ -182,5 +177,24 @@ class Program
             Console.Write("\nWould you like to order more? (Y/N): ");
             o = Convert.ToChar(Console.ReadLine());
         }
+	    double tp = 0;
+
+        for (int i = 0; i < count; i++)
+        {
+            Product c = cart[i];
+            Product p = products[i];
+            Console.WriteLine(p.product + " " + c.cQuantity + " " + p.price);
+
+            tp += c.cQuantity * p.price;
+        } 
+            double d = 0;
+
+            if (tp >= 5000)
+            {
+                d = tp * 0.1;
+            }
+            
+            tp -= d;
+            Console.WriteLine($"\nTotal price: {tp}");
     }
 }
