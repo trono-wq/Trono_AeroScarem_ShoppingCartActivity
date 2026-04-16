@@ -1,39 +1,3 @@
-using System;
-
-class Product
-{
-    public double price;
-    public string product;
-    public int id;
-    public int stock;
-    
-    public void DisplayMenu()
-    {
-        Console.WriteLine
-        (price + "              " + product + " " + id + "             " + stock);
-    }
-    public double cPrice;
-    public int cId;
-    public string cProduct;
-    public int cQuantity;
-}
-
-class Program
-{
-    static void Main()
-    {
-        Product[] products = new Product[15];
-        Product[] cart = new Product[15];
-        int t = 0;
-        int count = 0;
-
-        products[0] = new Product();
-        products[0].price = 400;
-        products[0].product = "Rice (5 kg)              ";
-        products[0].id = 101;
-        products[0].stock = 160;
-        
-        products[1] = new Product();
         products[1].price = 160;
         products[1].product = "Pandesal (12 pcs.)       ";
         products[1].id = 102;
