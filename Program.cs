@@ -1,3 +1,46 @@
+using System;
+
+class Product
+{
+    public double price;
+    public string product;
+    public int id;
+    public int stock;
+    
+    public double cPrice;
+    public int cId;
+    public string cProduct;
+    public int cQuantity;
+    
+    public void DisplayMenu()
+    {
+        Console.WriteLine
+        ("  " + price + "              " + product + " " + id + "             " + stock);
+    }
+    
+    public void AnotherMethod()
+    {
+        Console.WriteLine("\n\n===== Come Back Soon! ====");
+
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Product[] products = new Product[15];
+        Product[] cart = new Product[15];
+        int tt = 0;
+        int count = 0;
+
+        products[0] = new Product();
+        products[0].price = 400;
+        products[0].product = "Rice (5 kg)              ";
+        products[0].id = 101;
+        products[0].stock = 160;
+        
+        products[1] = new Product();
         products[1].price = 160;
         products[1].product = "Pandesal (12 pcs.)       ";
         products[1].id = 102;
@@ -80,23 +123,130 @@
         products[14].product = "Dishwashing Liquid (1 L) ";
         products[14].id = 503;
         products[14].stock = 185;
-        
-        char o = 'y';
 
+        char o = 'y';
+        int ti = 0;
+        
         while (char.ToLower(o) == 'y')
         {
-            for (int i = 0; i < products.Length; i++)
-            {
-                products[i].DisplayMenu();
-            }
-
-            Console.Write("\nEnter product ID: ");
-            int iId = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Enter quantity: ");
-            int iQ = Convert.ToInt32(Console.ReadLine());
+            ti++;
             
-            t += iQ;
+            if (ti == 1)
+            {
+                Console.WriteLine("=== TRONO'S STORE MENU ===");
+                Console.WriteLine("========= GROCERY ========");
+                
+            }
+            else
+            {
+                Console.WriteLine("\n\n=== TRONO'S STORE MENU ===");
+                Console.WriteLine(    "===== UPDATED GROCERY ====");
+                
+            }
+            string[] aisle =
+            {
+                "1 - Rice & Grains",
+                "2 - Proteins",
+                "3 - Vegetables & Fruits",
+                "4 - Pantry & Essentials",
+                "5 - Household & Personal Care"
+            };
+            for (int c = 1; c <= 5; c++)
+            {
+                Console.WriteLine($"\n{aisle[c - 1]}");
+                Console.WriteLine("\n  Price            Product                   Product ID      Stock\n");
+                for (int i = 0; i < products.Length; i++)
+                    {
+                        if (products[i].id / 100 == c)
+                        {
+                            products[i].DisplayMenu();
+                        }
+                    }
+            }
+            Console.WriteLine($"\n\nCart: ({tt} / 100)");
+            
+            for (int i = 0; i < count; i++)
+            {
+                Console.WriteLine($"{cart[i].cProduct} {cart[i].cQuantity}");
+            }
+            int iId;
+            bool ex = false;
+
+            while (true)
+            {
+                Console.Write("\nEnter product ID:  ");
+                string input = Console.ReadLine();
+                
+                if (!int.TryParse(input, out iId))
+                {
+                    Console.WriteLine("\nInvalid product ID:\n  The product ID you entered does not exist. Please select a valid ID from the store menu.");
+                    continue;
+                }
+                ex = false;
+
+                for (int i = 0; i < products.Length; i++)
+                {
+                    if (products[i] != null && products[i].id == iId)
+                        {
+                            ex = true;
+                            break;
+                        }
+                }
+                if (ex)
+                {
+                    break; 
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid product ID:\n  The product ID you entered does not exist. Please select a valid ID from the store menu.");
+                }
+            }       
+            
+            int iQ;
+            
+            while (true)
+            {
+                Console.Write("Enter quantity:    ");
+                string input = Console.ReadLine();
+            
+                if (!int.TryParse(input, out iQ))
+                {
+                    Console.WriteLine("\nNon-integer quantity:\n     Please enter a whole number within the stock amount for the quantity.\n");
+                    continue;
+                }
+            
+                if (tt + iQ > 100)
+                {
+                    Console.WriteLine($"\nCart limit reached:\n  You can only add {100 - tt} more item(s).\n");
+                    continue;
+                }
+            
+                bool v = false;
+            
+                for (int i = 0; i < products.Length; i++)
+                {
+                    if (products[i] != null && products[i].id == iId)
+                    {
+                        if (products[i].stock >= iQ)
+                        {
+                            v = true;
+                        }
+                        break;
+                    }
+                }
+            
+                if (v)
+                {
+                    break; 
+                }
+                else
+                {
+                    Console.WriteLine("\nInsufficient quantity:\n   Not enough stock for this product.\n");
+                    continue;
+                }
+            }
+            
+            tt += iQ;
             
             for (int i = 0; i < products.Length; i++)
             {
@@ -110,10 +260,11 @@
 
                         for (int j = 0; j < count; j++)
                         {
-                            if (cart[j].cId == iId)
+                            if (cart[j] != null && cart[j].cId == iId)
                             {
                                 cart[j].cQuantity += iQ;
                                 f = true;
+                                Console.WriteLine($"\nYou successfully added {iQ} {products[i].product}");
                                 break;
                             }
                         }
@@ -126,39 +277,77 @@
                             cart[count].cQuantity = iQ;
                             cart[count].price = products[i].price;
                             count++;
+                            Console.WriteLine($"\nYou successfully added {iQ} {products[i].product}");
                         }
                     }
                     break;
                 }
             }
-
-            Console.WriteLine($"Cart: ({t} / 100)");
-            for (int i = 0; i < count; i++)
+            if (tt == 100)
             {
-                Console.WriteLine($"{cart[i].cProduct} {cart[i].cQuantity}");
+                break;
             }
-
-            Console.Write("\nWould you like to order more? (Y/N): ");
-            o = Convert.ToChar(Console.ReadLine());
+            else if (tt < 100)
+            {
+                Console.Write("\nWould you like to order more? (Y/N): ");
+                o = Convert.ToChar(Console.ReadLine());
+            }
         }
-	    double tp = 0;
-
+        
+        double tp = 0;
+        
+        Console.WriteLine("\n\n=== TRONO'S STORE MENU ===");
+        Console.WriteLine("======== RECEIPT =========\n");
+        
         for (int i = 0; i < count; i++)
         {
             Product c = cart[i];
-            Product p = products[i];
-            Console.WriteLine(p.product + " " + c.cQuantity + " " + p.price);
-
-            tp += c.cQuantity * p.price;
-        } 
-            double d = 0;
-
-            if (tp >= 5000)
-            {
-                d = tp * 0.1;
-            }
+        
+            double bruh = c.cQuantity * c.price; 
+            tp += bruh;
             
-            tp -= d;
-            Console.WriteLine($"\nTotal price: {tp}");
-    }
+            Console.WriteLine($"{c.cId} {c.cProduct} {bruh}");
+                    Console.WriteLine($"   {c.cQuantity} # {c.price}");
+        }
+        
+         double d = 0;
+                string dm = "[NOT APPLIED]";
+                
+                if (tp >= 5000)
+                {
+                    d = tp * 0.10;
+                    dm = "[APPLIED]";
+                }
+                
+                double ft = tp - d;
+        
+                Console.WriteLine($"\n            Grand Total:      {tp}");
+                Console.WriteLine(  $"            10% Discount:     {dm}");
+                Console.WriteLine(  $"            Final Total:      {ft}");
+        
+        Console.WriteLine("\n\n=== TRONO'S STORE MENU ===");
+        Console.WriteLine(    "===== UPDATED GROCERY ====");
+        string[] tAisle =
+        {
+            "1 - Rice & Grains",
+            "2 - Proteins",
+            "3 - Vegetables & Fruits",
+            "4 - Pantry & Essentials",
+            "5 - Household & Personal Care"
+        };
+        for (int c = 1; c <= 5; c++)
+        {
+            Console.WriteLine($"\n{tAisle[c - 1]}");
+            Console.WriteLine("\n  Price            Product           Product ID      Stock\n");
+            for (int i = 0; i < products.Length; i++)
+            {
+                if (products[i].id / 100 == c)
+                {
+                    products[i].DisplayMenu();
+                }
+            }
+        }
+        Product a = new Product();
+        a.AnotherMethod();
+    }   
 }
