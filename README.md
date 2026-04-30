@@ -27,3 +27,20 @@ AI USAGE
 
   Double checking potential bugs
         * Verifying if program is bug-free and asking for assistance in correcting existing bugs
+        
+------------------------------------------------------------------------------------------------------------------------------
+
+- Summary of changes and update of README.md (Part 2 features)
+    - Summary of changes and update of README.md (Part 2 features)
+    - Aisle renamed to "Categories" and moved to class Product
+    - Moved cart data to class Cart
+    - Changed loop solution from “char o” to “bool v = true”
+  
+Updated AI Usage (Includes sending blocks or sections of codes to fix errors and bugs and other questions similar)
+    - (1) Product Categories & Addressing Comments
+    	- "How to call an array from another class and method for a loop"
+        
+Input / Output Titles
+    - (A) Search and category 
+
+
