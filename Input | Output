@@ -1,0 +1,68 @@
+=== TRONO'S STORE MENU ===
+========= GROCERY ========
+
+1 - Rice & Grains
+  Price            Product                   Product ID      Stock
+
+  400              Rice (5 kg)               101             160
+  160              Pandesal (12 pcs.)        102             115
+  130              Noodles (double pack)     103             225
+
+2 - Proteins
+  Price            Product                   Product ID      Stock
+
+  210              Chicken (1 kg)            201             115
+  195              Eggs (1 tray)             202             90
+  270              Pork (1 kg)               203             90
+
+3 - Vegetables & Fruits
+  Price            Product                   Product ID      Stock
+
+  100              Pechay (5 bundles)        301             140
+  190              Bananas (2 kg)            302             75
+  110              Potatoes (1 kg)           303             60
+
+4 - Pantry & Essentials
+  Price            Product                   Product ID      Stock
+
+  195              Cooking Oil (1 L)         401             120
+  150              Soy Sauce (2 bottles)     402             140
+  130              Sugar (2 kg)              403             160
+
+5 - Household & Personal Care
+  Price            Product                   Product ID      Stock
+
+  185              Fresh Milk (carton)       501             110
+  140              Body Wash                 502             150
+  100              Dishwashing Liquid (1 L)  503             185
+
+
+Cart: (0 / 100)
+
+1 - Add to cart
+2 - Cart Management
+
+Select Option:                 1
+
+Filter by category? (y/n):     y
+
+1 - Rice & Grains
+2 - Proteins
+3 - Vegetables & Fruits
+4 - Pantry & Essentials
+5 - Household & Personal Care
+
+Select category:               1
+
+1 - Rice & Grains
+  400              Rice (5 kg)               101             160
+  160              Pandesal (12 pcs.)        102             115
+  130              Noodles (double pack)     103             225
+
+Enter product ID or name:      rice (5 kg)
+
+Product is found and selected: Rice (5 kg)              
+
+Enter quantity:                50
+
+You successfully added 50 Rice (5 kg)              
