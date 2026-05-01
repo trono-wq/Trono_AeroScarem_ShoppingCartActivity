@@ -30,17 +30,25 @@ AI USAGE
         
 ------------------------------------------------------------------------------------------------------------------------------
 
-- Summary of changes and update of README.md (Part 2 features)
+Summary of changes and update of README.md (Part 2 features)
     - Summary of changes and update of README.md (Part 2 features)
     - Aisle renamed to "Categories" and moved to class Product
     - Moved cart data to class Cart
     - Changed loop solution from “char o” to “bool v = true”
+    - Users can navigate products by means of filtering categories, ID and/or name
   
 Updated AI Usage (Includes sending blocks or sections of codes to fix errors and bugs and other questions similar)
     - (1) Product Categories & Addressing Comments
     	- "How to call an array from another class and method for a loop"
         
+    - (2) 1 - Add to cart option
+		- “How to avoid crashing when product name is not detected”
+		- “Why is there a scope issue in my “Select action” section of my code?"
+		- “How to make break; not loop everything back again”
+		- “How to loop a question if an input is assigned as a string yet is invalid”
+
 Input / Output Titles
     - (A) Search and category 
+    - (B) Input / Output Titles
 
 
