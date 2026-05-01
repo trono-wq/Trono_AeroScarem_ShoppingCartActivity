@@ -1,3 +1,125 @@
+//////////////////// Low stock alert, order history and ending the program /////////////////////////////////////////////////////////////////////////
+
+=== TRONO'S STORE MENU ===
+======== RECEIPT =========
+
+Receipt #:      2
+Date, Time:     04/30/2026 23:33:04
+
+202 Eggs (1 tray)             16575
+   85 # 195
+
+            Grand Total:      16575
+            10% Discount:     [APPLIED]
+            Final Total:      14917.5
+
+            Payment:          20000
+            Change:           5082.5
+
+LOW STOCK ALERT:
+  Product                  Stock
+  Eggs (1 tray)            5        
+
+Order History? (y/n):          y
+
+Receipt #1 - Final Total: PHP 7560
+Receipt #2 - Final Total: PHP 5082.5
+
+Shop again? (y/n):               n
+
+//////////////////// Checkout features such as sufficient and insufficient payment and receipt features ////////////////////////////////////////////
+
+1 - View Cart
+2 - Remove from cart
+3 - Clear cart
+4 - Add to cart
+5 - Checkout
+
+Select Option:                 5
+
+Final Total:                   7560
+Enter Payment:                 1000
+
+Insufficient payment:
+  Payment must higher or equal than the final total.
+
+Final Total:                   7560
+Enter Payment:                 7565
+
+=== TRONO'S STORE MENU ===
+======== RECEIPT =========
+
+Receipt #:      1
+Date, Time:     04/30/2026 23:06:39
+
+201 Chicken (1 kg)            8400
+   40 # 210
+
+            Grand Total:      8400
+            10% Discount:     [APPLIED]
+            Final Total:      7560
+
+            Payment:          7565
+            Change:           5
+
+Order History? (y/n):          n
+
+Shop again? (y/n):               y
+
+
+=== TRONO'S STORE MENU ===
+===== UPDATED GROCERY ====
+
+//////////////////// Clearing cart feature /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1 - View Cart
+2 - Remove from cart
+3 - Clear cart
+4 - Add to cart
+5 - Checkout
+
+Select Option:                 3
+
+Cart is cleared and products are returned to the store.
+
+1 - View Cart
+2 - Remove from cart
+3 - Clear cart
+4 - Add to cart
+5 - Checkout
+
+Select Option:                 1
+
+Cart: (0 / 100)
+
+
+//////////////////// Removal and viewing of cart product ///////////////////////////////////////////////////////////////////////////////////////////
+
+1 - View Cart
+2 - Remove from cart
+3 - Clear cart
+4 - Add to cart
+5 - Checkout
+
+Select Option:                 2
+
+Enter product ID or name:      101
+
+Enter quantity:                30
+
+Removed from cart: 20     Rice (5 kg)              
+
+1 - View Cart
+2 - Remove from cart
+3 - Clear cart
+4 - Add to cart
+5 - Checkout
+
+Select Option:                 1
+
+Cart: (20 / 100)
+Rice (5 kg)               20
+
 //////////////////// Returning to an updated store menu ///////////////////////////////////////////////////////////////////////////////////////////
 
 ========= GROCERY ========
